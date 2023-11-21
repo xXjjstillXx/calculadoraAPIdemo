@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.calculadoraAPI.exceptions.CalculadoraException;
 import com.example.calculadoraAPI.service.CalculadoraService;
 
 @RestController
@@ -33,7 +34,7 @@ public class CalculadoraController {
     }
 
     @PostMapping("/dividir")
-    public ResponseEntity<?> dividir(@RequestParam int numA, @RequestParam int numB){
+    public ResponseEntity<?> dividir(@RequestParam int numA, @RequestParam int numB) throws CalculadoraException{
         return new ResponseEntity<>(this.calculadoraService.dividir(numA, numB),HttpStatus.OK);
     }
 }
